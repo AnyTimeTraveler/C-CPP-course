@@ -1,4 +1,3 @@
-
 #include "pascal_string.hpp"
 #include <iostream>
 

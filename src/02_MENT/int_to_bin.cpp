@@ -1,20 +1,14 @@
-#include "pascal_string.hpp"
 #include "print_pascal_string.hpp"
 
 PascalString intToDual(int number) {
 	PascalString ps = {0};
 	for (; number > 0; number /=2) {
 		if (number%2 == 1) {
-		 	append(ps, '1');
+      ps.append('1');
 		} else {
-			append(ps, '0');
+      ps.append('0');
 		}
 	}
-	return reverse(ps);
+	return ps.reverse();
 }
 
-int main() {
-	int a = 5;
-	printPascalString(intToDual(a));
-	return 0;
-}
