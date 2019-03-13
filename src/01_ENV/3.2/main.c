@@ -38,6 +38,8 @@ int main(int argc, char **argv) {
 	  }
   }
 
+	printf("\n\n\n\n");
+
 	// 5. Recursive implementation
 	recurse(20);
 	
