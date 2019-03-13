@@ -12,7 +12,7 @@ PascalString PascalString::reverse() {
 	PascalString output;
   output.length = length;
 	for(int i = 0; i < length; i++) {
-		output.characters[i] = characters[length - i];
+		output.characters[i] = characters[length - 1 - i];
 	}
 	return output;
 }
