@@ -3,8 +3,10 @@
 
 #include "../helpers/println.hpp"
 #include <iostream>
+#include <cstring>
 //include <cstdint>
-#include "pascal_string.cpp"
+#include "print_pascal_string.hpp"
+#include "pascal_string.hpp"
 
 // helper function for print() and println()
 // no need to understand it right now
@@ -18,7 +20,7 @@ std::string as_string(PascalString p){
 PascalString fromString(std::string s){
   PascalString p;
   p.length = s.length();
-  for(int i=0; i<s.length(); i++){
+  for(int i = 0; i < s.length(); i++){
     p.characters[i] = s[i];
   }
   return p;
@@ -28,48 +30,21 @@ PascalString fromString(std::string s){
 
 
 int hexDigitToInt(char hexDigit){
-	switch (hexDigit) {
-		case '0':
-			return 0;
-	  case '1':
-			return 1;
-	  case '2':
-			return 2;
-	  case '3':
-			return 3;
-	  case '4':
-			return 4;
-	  case '5':
-			return 5;
-	  case '6':
-			return 6;
-	  case '7':
-			return 7;
-	  case '8':
-			return 8;
-	  case '9':
-			return 9;
-	  case 'a':
-	  case 'A':
-			return 10;
-		case 'b':
-	  case 'B':
-			return 11;
-	 	case 'c':
-	  case 'C':
-			return 12;
-		case 'd':
-	  case 'D':
-			return 13;
-		case 'e':
-	  case 'E':
-			return 14;
-		case 'f':
-	  case 'F':
-			return 15;
-		default:
-			return -1;
+	// digits
+	if (hexDigit >= 48 && hexDigit <= 57) {
+		return hexDigit - 48;
 	}
+	// lowercase chars
+	if (hexDigit >= 65 && hexDigit <= 69) {
+		return hexDigit - 55;
+	}
+	// upper case chars
+	if (hexDigit >= 97 && hexDigit <= 102) {
+		return hexDigit - 87;
+	}
+
+	// out of range
+	return -1;
 }
 
 int hexStringToInt(PascalString binaryDigits){
@@ -83,11 +58,22 @@ int hexStringToInt(PascalString binaryDigits){
 }
 
 int main(int argc, char** argv, char** envp){
-	PascalString s = {3, '1', '0', '0'};
-	PascalString s2 = {4, 'f', 'f', 'f', 'f'};
-  println(hexStringToInt(s));
+	for (int i = 0; i < 16; i ++) {
+		std::stringstream stream;
+		stream << std::hex << i;
+		std::string result (stream.str());
+		char cstr[result.size()];
+		strcpy(cstr, result.c_str());
+		PascalString ps (cstr);
+		println(hexStringToInt(ps));
+	}
+	println("\n");
+	
+	PascalString s ("100");
+	PascalString s2 ("ffff");
+	println(hexStringToInt(s));
   println(hexStringToInt(s2));
   println(fromString("Hello, World!"));
-  	return 0;
+  return 0;
 }
 

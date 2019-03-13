@@ -3,15 +3,13 @@
 
 PascalString intToDual(int number) {
 	PascalString ps;
-	for (; number > 0; number /=2) {
-		if (number % 2 == 1) {
-      //printf("1");
+	for (int i = sizeof(number) * 8; i > 0; i--) {
+		if (number >> i & 1) {
 			ps.append('1');
 		} else {
-			//printf("0");
       ps.append('0');
 		}
 	}
-	return ps.reverse();
+	return ps;
 }
 
