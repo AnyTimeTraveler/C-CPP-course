@@ -3,6 +3,6 @@
 
 int main() {
   PascalString ps ("test");
-  printPascalString(ps);
+  printPascalString(ps.reverse());
   return 0;
 }
