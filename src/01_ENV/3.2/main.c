@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 }
 
 void recurse(int x) {
-	printf("%d\n", func1(x));
+	printf("%d -> %d\n", x, func1(x));
 	if (x > 0) {
 		recurse(x-1);
 	}
@@ -54,8 +54,8 @@ void recurse(int x) {
 
 void revrecurse(int x) {
 	if (x > 0) {
-		recurse(x-1);
+		revrecurse(x-1);
 	}
-	printf("%d\n", func1(x));
+	printf("%d -> %d\n", x, func1(x));
 }
 
