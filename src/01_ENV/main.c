@@ -5,7 +5,7 @@
 void recurse(int x);
 void revrecurse(int x);
 
-int main(int argc, char **argv) {
+int main() {
 	// Grundgeruest
   for(int i = 0;i<=20;i++){
     printf("%d\n", func1(i));
