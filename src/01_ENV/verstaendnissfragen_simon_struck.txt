@@ -1,0 +1,74 @@
+
+Verstaendnisfragen:
+
+1. Schreiben Sie kurze Glossar-Einträge für alle an der Übersetzung/Erstellung eines Programms beteiligten Komponenten bzw. Phasen.
+
+PCC, Clang, GCC: Unterschiedliche C compiler
+Vim, GNU nano, gEdit: text editoren
+CLion, Visual Studio, CodeLite: IDE's
+
+Compiler schritte:
+ 1. Preprocessor  : Verarbeitet Makros, welche in C mit # beginnen
+ 2. Compiler      : Uebersetzt den C code in Assembler code
+ 3. Assembler     : Uebersetzt den Assembler code in Maschinensprache, die als object datei gespeichert wird
+ 4. Linker        : Verlinkt eine oder mehrere Object dateien und generiert ein ausfuerbares programm
+
+
+2. Ist es möglich, von einer Quelldatei aus eine Funktion aufzurufen, welche in einer anderen Quelldatei definiert ist? Begründung!
+
+Ja.
+Eigentlich muss dafuer vorher im Code der Header dieser Funktion deklariert werden, aber alle modernen C compiler geben nur eine warnung aus und geben erst einen fehler aus, die implementation einer funktion nicht gefunden werden kann.
+
+
+3. Welche Aufgaben übernimmt der Compiler?
+
+Ich nehme an, dass hier der gesamte compiler gemeint ist und nicht nur die C compiler stage des Uebersetzungs prozesses.
+Der Compiler wandelt menschen-lesbaren Programmcode in machinen-lesbaren Programmcode um.
+
+
+4. Was ist der Unterschied zwischen einer ausführbaren Datei (z.B. a.out) und einer Objektdatei (.obj)?
+
+Eine Objektdatei (main.obj) enthaelt den fertig uebersetzten Machinencode. Dieser enthaelt aber eventuell referenzen auf Funktionen aus anderen Dateien und ist auch noch nicht ausfuerbar.
+Erst der Linker bindet eine oder mehrere Objektdateien und generiert ein ausfuerbares Programm.
+
+
+5. Was ist der Unterschied zwischen einer Bibliotheksdatei (.a) und einer ausführbaren Datei (z.B. a.out)?
+
+Eine Bibliotheksdatei ist nicht ausfuerbar und bietet Funktionen fuer andere Programme oder Bibliotheken an.
+Eine ausfuerbare Datei nutzt Funktionen aus Bibliotheken um ihre Aufgabe zu vollenden.
+Ausserdem sollte man eine .so Datei einer .a Datei bevorzugen, wenn man sein Programm nicht bei jeder Aenderung der Bibliothek neu compilieren will.
+
+
+6. Was ändert sich im Assemblercode (objdump -S), wenn Sie einer Funktion eine lokale Variable hinzufügen?
+
+Die Assembler Instruktionen:
+sub    $0x10,%rsp
+movl   $0x0,-0x4(%rbp)
+
+sind hinzu gekommen.
+
+7. Welche Art von Fehler von welchem Werkzeug ergibt sich, wenn #include "func1.h" in main.c fehlt, dort aber func1() aufgerufen wird?
+
+Keiner, solange beim Kompilieren der Befehl `pcc main.c func1.c` verwendet wird.
+Aktiviert man die Warnungen, sieht man folgendes:
+```
+main.c: In function ‘main’:
+main.c:9:20: warning: implicit declaration of function ‘func1’ [-Wimplicit-function-declaration]
+     printf("%d\n", func1(i));
+```
+
+Dies warnt darueber, dass der Header von func1 nicht vorhanden ist, aber von der Verwendung von func1 abgeleitet wurde, welche Argumente und Rueckgabewerte von der Funktion erwartet werden.
+
+In aelteren Versionen des Compilers war es noch zwingend notwendig eine Funktion entweder vor ihrer Verwendung zu dekalrieren oder ihren Header vor der der Verwendung an zu geben.
+
+
+8. Welche Art von Fehler von welchem Werkzeug ergibt sich, wenn #include "func1.h" in main.c vorhanden ist und int func1(int) in func1.h deklariert ist, aber func1.c keine Definition von int func1(int) enthält?
+
+Der Linker meldet sich mit folgender Fehlermeldung:
+```
+/sbin/ld: /tmp/ccTDBPPL.o: in function `main':
+main.c:(.text+0x17): undefined reference to `func1'
+```
+
+Dies bedeutet, dass der Linker in keiner der angegebenen Objectdateien eine Implementation von func1 gefunden hat und desswegen das Programm nicht vollstaending verlinken kann.
+
