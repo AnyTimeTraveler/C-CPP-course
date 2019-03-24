@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstring>
 //include <cstdint>
-#include "print_pascal_string.hpp"
+#include "functions.hpp"
 #include "pascal_string.hpp"
 
 // helper function for print() and println()
@@ -20,7 +20,7 @@ std::string as_string(PascalString p){
 PascalString fromString(std::string s){
   PascalString p;
   p.length = s.length();
-  for(int i = 0; i < s.length(); i++){
+  for(int i = 0; i < p.length; i++){
     p.characters[i] = s[i];
   }
   return p;
@@ -57,7 +57,7 @@ int hexStringToInt(PascalString binaryDigits){
 	return returnValue;
 }
 
-int main(int argc, char** argv, char** envp){
+int main(){
 	for (int i = 0; i < 16; i ++) {
 		std::stringstream stream;
 		stream << std::hex << i;

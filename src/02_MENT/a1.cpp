@@ -1,5 +1,5 @@
 #include "pascal_string.hpp"
-#include "print_pascal_string.hpp"
+#include "functions.hpp"
 
 int main() {
 	PascalString test ("test");
