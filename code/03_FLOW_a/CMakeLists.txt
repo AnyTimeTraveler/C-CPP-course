@@ -6,7 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}")
 
 
-add_executable(
+add_executable(03_FLOW_a
         src/main_mp2_FLOW_a.cpp
         ../helpers/AnsiConsole.cpp)
 
