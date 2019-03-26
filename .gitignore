@@ -3,4 +3,9 @@
 *.s
 *.i
 *.zip
+.idea/
+*.iml
+*.iws
+*.ipr
+cmake-build-debug/
 
