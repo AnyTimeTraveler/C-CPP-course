@@ -8,4 +8,5 @@
 *.iws
 *.ipr
 cmake-build-debug/
+build/
 
