@@ -54,23 +54,65 @@ int hexStringToInt(PascalString binaryDigits){
 	return returnValue;
 }
 
-int main(int argc, char** argv, char** envp){
-	for (int i = 0; i < 16; i ++) {
-		std::stringstream stream;
-		stream << std::hex << i;
-		std::string result (stream.str());
-		char cstr[result.size()];
-		strcpy(cstr, result.c_str());
-		PascalString ps (cstr);
-		println(hexStringToInt(ps));
+
+
+
+
+
+int hexalDigitToInt(char hexDigit){
+	// digits
+	if (hexDigit >= '0' && hexDigit <= '6') {
+		return (int) (hexDigit - '0');
 	}
-	println("\n");
 	
+	// out of range
+	return -1;
+}
+
+int hexalStringToInt(PascalString binaryDigits){
+	int returnValue = hexalDigitToInt(binaryDigits.characters[binaryDigits.length - 1]);
+	int base = 6;
+	for (int i = binaryDigits.length - 2; i >= 0; i--) {
+		returnValue += base * hexalDigitToInt(binaryDigits.characters[i]);
+		base *= 6;
+	}
+	return returnValue;
+}
+
+char intDigitToHexal(int hexDigit){
+	// digits
+	if (hexDigit >= 0 && hexDigit <= 6) {
+		return (char) hexDigit + '0';
+	}
+	
+	// out of range
+	return -1;
+}
+
+PascalString intToHexalString(int number){
+  PascalString ps;
+  for (;number>0;number /=6) {
+    char out = number % 6 + '0';
+    ps.append(out);
+  }
+  return ps.reverse();
+}
+
+int main(){
 	PascalString s ("100");
-	PascalString s2 ("ffff");
-	println(hexStringToInt(s));
-  println(hexStringToInt(s2));
-  println(fromString("Hello, World!"));
+	PascalString s2 ("123456");
+
+  int si = hexalStringToInt(s);
+  int s2i = hexalStringToInt(s2);
+
+  printPascalString(s);
+	println(si);
+  println(intToHexalString(si));
+
+  printPascalString(s2);
+	println(s2i);
+  println(intToHexalString(s2i));
+
   return 0;
 }
 

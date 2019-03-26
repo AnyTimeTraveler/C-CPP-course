@@ -1,5 +1,5 @@
 #include <stdio.h>  /* file main_mp2_FLOW_a.cpp */
-#include "AnsiConsole.h"
+#include "../helpers/AnsiConsole.h"
 
 AnsiConsole console; int firstLine; int currentTick; Colors currentColor;
 #define INITPRINT(label) {firstLine=__LINE__;console.printText(2*currentTick,0,label,Colors::BLACK);}
