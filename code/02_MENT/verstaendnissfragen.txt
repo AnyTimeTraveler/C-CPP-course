@@ -1,0 +1,38 @@
+
+Verständnisfragen:
+
+1. Vergleichen Sie die beiden Arten, Zeichenketten zu speichern, wie sie von
+Pascal und C verwendet werden. Welche Vor- und Nachteile existieren
+jeweils?
+
+Vorteil in Pascal:
+ - Länge der Zeichenkette ist eine O(1) operation
+Nachteil in Pascal:
+ - Beim Ändern des strings muss immer auch die Länge neu berechnet werden O(n)
+
+Vorteil in C:
+ - Ändern eines Strings ist eine O(n) operation und muss nicht die Länge neu berechnen
+Nachteil in C:
+ - Man muss trotz dem sicher gehen, dass man genug Speicher reserviert hat
+
+
+2. Welches Bitmuster ergibt sich am Ende des folgenden Codes?
+```
+int controlRegister = 128;       // 0b010000000
+    controlRegister |= 64 + 32;  // 0b011100000
+    controlRegister ^= 16;       // 0b011110000
+    controlRegister &= 128+64;   // 0b011000000
+    controlRegister <<= 1;       // 0b110000000
+```
+
+Antwort: 0b110000000
+
+
+4. Welchen Typ haben die unten angegebenen Ausdrücke?
+```
+int    x = 1;
+double x = 1.0;
+string x = "1.0";
+double x = 1 + 1.0;
+char   x = '1'; 
+```

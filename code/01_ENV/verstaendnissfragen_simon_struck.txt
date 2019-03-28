@@ -1,5 +1,5 @@
 
-Verstaendnisfragen:
+Verständnisfragen:
 
 1. Schreiben Sie kurze Glossar-Einträge für alle an der Übersetzung/Erstellung eines Programms beteiligten Komponenten bzw. Phasen.
 
