@@ -7,7 +7,7 @@ set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(03_FLOW_a
-        src/main_mp2_FLOW_a.cpp
+        src/solution.cpp
         ../helpers/AnsiConsole.cpp)
 
 include_directories(
