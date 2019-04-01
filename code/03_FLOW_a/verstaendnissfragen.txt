@@ -1,0 +1,20 @@
+1. Stellen Sie sich eine Sequenz von gleichartigen Anweisungen vor (z.B. arr[0] = 0; arr[1] = 0; arr[2] = 0; etc.).
+   Welche Vorteile hat es, hier stattdessen eine Iteration zu verwenden?
+
+ - Weniger Wiederholung.
+ - Folgt dem DRY Prinzip.
+ - Wenn sich die Implementation aendert,macht es nichts aus, solange er eine Iterator implementation het.
+
+
+2. Welche Vorteile hat es, eine Problemstellung rekursiv zu implementieren?
+
+ - Jeder Funktionsaufruf hat sein eigenes Scope. Somit kann man zum Beispiel einen Tree viel leichter verarbeiten ("traverse" in English).
+ - Gute logische Kapselung zwischen Iterationen
+ - Ermoeglicht es eine Schleife ohne variablen zu implementieren
+
+
+3. Welche Nachteile hat es, eine Problemstellung rekursiv zu implementieren?
+
+ - Maximale Iterationsanzahl auf Stackgroesse gegrenzt, also keine unendlichen 
+ - Geteilte Variablen muessen jedes Mal uebergeben werden, was zu grossem Speicherverbrauch fuehren kann
+ - Jeder Aufruf der Methode kostet Ressourcen als Iteration
