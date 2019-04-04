@@ -4,6 +4,8 @@
 RationalNumber addRationalNumbers(RationalNumber left, RationalNumber right){
 	RationalNumber result;
 	// add left and right
+    result.nenner = left.nenner * right.nenner;
+    result.zaehler = left.zaehler * right.zaehler + right.zaehler * left.nenner;
 	return result;
 }
 
@@ -21,8 +23,8 @@ std::string as_string(RationalNumber r){
   return result;
 }
 
-/*std::ostream& operator<< (std::ostream& os, RationalNumber &toBePrinted){
+std::ostream& operator<< (std::ostream& os, RationalNumber &toBePrinted){
 	os << "(" << toBePrinted.zaehler << "/"
 	<< toBePrinted.nenner << ")";
 	return os;
-}*/
+}
