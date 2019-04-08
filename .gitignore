@@ -9,4 +9,5 @@
 *.ipr
 cmake-build-debug/
 build/
+*.zip
 
