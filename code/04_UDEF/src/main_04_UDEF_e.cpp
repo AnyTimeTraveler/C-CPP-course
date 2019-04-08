@@ -4,7 +4,7 @@
 
 struct BinaryOctet {
     bool evenParity;     // set to true if number of '1' in bitsAsDigits is even, false otherwise
-    unsigned char value; // bit values as chars (no, bits as bits)
+    unsigned char value; // bit values as chars (no, bits as bits! waaay easier!)
     BinaryOctet(int x = 0) {
         value = (unsigned char) x;
         regenerateParityBit();
@@ -32,6 +32,22 @@ struct BinaryOctet {
         return BinaryOctet(value - 1);
     }
 
+    BinaryOctet operator+=(int x) {
+        value += x;
+        regenerateParityBit();
+        return BinaryOctet(value - x);
+    }
+
+    BinaryOctet operator-=(int x) {
+        value -= x;
+        regenerateParityBit();
+        return BinaryOctet(value + x);
+    }
+
+    operator double() const {
+        return value;
+    }
+
     void regenerateParityBit() {
         evenParity = true;
         for (int i = 0; i < 8; i++) {
@@ -41,6 +57,10 @@ struct BinaryOctet {
         }
     }
 };
+
+BinaryOctet operator+(BinaryOctet left, int right) {
+    return left.value + right;
+}
 
 BinaryOctet operator+(BinaryOctet left, BinaryOctet right) {
     return left.value + right.value;
@@ -62,14 +82,9 @@ BinaryOctet operator*(BinaryOctet left, BinaryOctet right) {
 BinaryOctet doCalculation(BinaryOctet a, BinaryOctet b) {
     BinaryOctet result;
 
-    println(a);
-    println(b);
     for (; a != b; b--) {
         a = a + 1;
         a = a / b;
-
-        println(a);
-        println(b);
     }
     result = a + b;
 
@@ -93,12 +108,19 @@ std::ostream &operator<<(std::ostream &os, const BinaryOctet &toBePrinted) {
     return os;
 }
 
+void foobar(double cheese){
+    std::cout << cheese << std::endl;
+}
+
 int main(int argc, char **argv) {
     BinaryOctet a = 0b00001111;
     BinaryOctet b = 0b00000110;
-    println("result = ", doCalculation(a, b));
-    std::cout << "result = " << doCalculation(a, b) << std::endl;
-//    std::cout << as_string(a) << std::endl;
-//    std::cout << as_string(b) << std::endl;
+
+    // these have to be commented out, since there is an arithmetic exception in doCalculation
+//    println("result = ", doCalculation(a, b));
+//    std::cout << "result = " << doCalculation(a, b) << std::endl;
+    foobar(a);
+    std::cout << as_string(a) << std::endl;
+    std::cout << as_string(b) << std::endl;
     return 0;
 }
