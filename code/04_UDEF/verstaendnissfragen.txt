@@ -1,0 +1,53 @@
+1. Sortieren Sie die folgenden Begriffe in die Reihenfolge von hohem Abstraktionsniveau zu konkret: Ford Mustang, Nutzfahrzeug, PKW, Fahrzeug, LKW.
+
+Hoch nach Tief:
+ 1. Fahrzeug
+ 2. PKW          | Nutzfahrzeug
+ 3. Ford Mustang | LKW
+
+
+2. Begründen Sie Ihre Einordnung.
+
+Weil das eben so ist.
+
+
+3. Welchen Zweck haben benutzerdefinierte Datentypen?
+Beziehungsweise: warum begnügt man sich bei der Implementierung von Programmierproblem nicht mit den in C++ eingebauten Datentypen?
+
+Eine Gruppierung von primitiven Daten um die Realitaet besser modelieren zu koennen.
+
+
+4. Welche Schritte sind notwendig, um zwei nullterminierte Zeichenketten an einander zu hängen? 
+Geben Sie mindestens zwei der möglichen Antworten.
+
+string a = "testa";
+string b = "testb";
+
+string c = a + b;
+
+oder 
+
+Die unterliegenden char arrays kopieren und am ende einen Nillterminator anfuegen. 
+
+
+5. Welche Aussagen können Sie bezüglich des Ausdrucks a = b + c machen?
+
+Es kann eine mathematische Operation sein.
+Es kann eine string Concatination sein.
+Es kann eine benutzerdefinierte Funktion sein. 
+
+Falls a, b, oder c unterschiedliche Typen haben, wird dazwischen noch gecastet.
+
+
+6. Welchen Nutzen hat typedef?
+
+typedef ist quasi ein alias fuer Typen.
+Zum Beispiel:
+
+typedef unsigned int newint;
+
+unsigned int int1;
+newint int2;
+
+
+ 
