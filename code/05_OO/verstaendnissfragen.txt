@@ -1,0 +1,46 @@
+1. Auf welche Methoden und Felder von anderen Klassen hat Code, der sich in einer anderen Klasse befindet, Zugriff?
+
+Auf alle Methoden und Felder, die unter public deklariert wurden.
+
+
+2. Was sind die wesentlichen Unterschiede bzgl. des Lebenszyklus’ von Objekten im free store und solchen, die nicht dort angesiedelt sind?
+
+Im free store bleiben Objekte so lange bestehen, bis sie entweder manuell aufgeraeumt werden oder das Programm beendet wird.
+
+
+3. Welchen Zweck erfüllen Basisklassen, von denen andere Klassen abgeleitet sind?
+
+Um Gemeinsamkeiten zu vereinigen (DRY) und zur Abstraktion.
+
+
+4. Zu welchem Zeitpunkt wird entschieden, welche Methodenimplementierung aufgerufen werden soll, bei a) virtual-Methoden und b) nicht-virtual-Methoden.
+
+a) Laufzeit
+b) Compilezeit
+
+
+5. Was passiert beim Aufruf der Funktion void foo(Base*) mit einem Zeiger auf ein Objekt der Klasse Derived? (Klasse Derived ist abgeleitet von Base)
+
+Das Objekt wird als Base behandelt und somit koennen auch nur Funktionen der Base-Klasse aufgerufen werden.
+
+
+6. Was passiert beim Aufruf der Funktion void foo(Derived*) mit einem Zeiger auf ein Objekt der Klasse Base? (Klasse Derived ist abgeleitet von Base)
+
+Fehler.
+Das Objekt koennte von einer anderen Klasse (z.B. Derived2) sein und damit inkompatibel mit Derived sein.
+
+
+7. Welche Aufgaben hat ein Konstruktor?
+
+Die Feilder eines Objekts zu initialisieren.
+
+
+8. Welche Vorteile hat es, Code gegen eine Basisklasse (z.B. Shape) zu schreiben, statt gegen konkrete Klassen (z.B. Rectangle, Circle)?
+
+Erhoete Abstraktion: Implementationsdetails koennen einfacher veraendert werden.
+Erweiterbarkeit: Eine Triangle hinzuzuguegen ist wesendlich einfacher und braucht nur minimale bis keine Aenderungen.
+
+
+9. Es wurde Code gegen eine Basisklasse (z.B. Shape) geschrieben, von der konkrete Klassen (z.B. Rectangle, Circle) abgeleitet sind. Muss der Code angepasst werden, falls in der Zukunft eine neue Klasse Triangle hinzukommt? Muss die Quelldatei neu übersetzt werden?
+
+Nein, da die Basisklasse nicht veraendert worden ist und sich immernoch genau so nutzen lassen kann.
