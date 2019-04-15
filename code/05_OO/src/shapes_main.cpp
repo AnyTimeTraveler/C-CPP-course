@@ -1,4 +1,3 @@
-#define _USE_MATH_DEFINES
 #include <math.h>
 #include <utility>
 #include <iostream>
@@ -32,7 +31,7 @@ public:
 
     virtual double area() = 0;
 
-    virtual ~Shape() = 0;
+    virtual ~Shape() = default;
 };
 
 
@@ -146,6 +145,8 @@ int main(int argc, char **argv) {
     schneeMann->add(new Circle(Colors::GREEN, 20, 15, 6));
     schneeMann->add(new Circle(Colors::GREEN, 20, 10, 4));
     schneeMann->add(new Rectangle(Colors::GREEN, 32, 23, 4, 4));
+    schneeMann->add(new Point(Colors::GREEN, 10, 10));
+    schneeMann->add(new Point(Colors::GREEN, 40, 10));
 
     schneeMann->draw();
 
