@@ -32,7 +32,7 @@ public:
 class Point : public Shape {
 public:
     explicit Point(Colors color, int x = 0, int y = 0)
-            : Shape(color, Position(x, y)) {}
+            : Shape(color, Position(x, y), "*") {}
 
     void draw() override {
         ansiConsole.printText(position.x, position.y, "*", color);
