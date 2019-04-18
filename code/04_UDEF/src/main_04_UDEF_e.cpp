@@ -44,6 +44,10 @@ struct BinaryOctet {
         return BinaryOctet(value + x);
     }
 
+    BinaryOctet operator~() {
+        return BinaryOctet(~value);
+    }
+
     operator double() const {
         return value;
     }
@@ -114,13 +118,13 @@ void foobar(double cheese){
 
 int main(int argc, char **argv) {
     BinaryOctet a = 0b00001111;
-    BinaryOctet b = 0b00000110;
+//    BinaryOctet b = 0b00000110;
 
     // these have to be commented out, since there is an arithmetic exception in doCalculation
 //    println("result = ", doCalculation(a, b));
 //    std::cout << "result = " << doCalculation(a, b) << std::endl;
     foobar(a);
     std::cout << as_string(a) << std::endl;
-    std::cout << as_string(b) << std::endl;
+    std::cout << as_string(~a) << std::endl;
     return 0;
 }
