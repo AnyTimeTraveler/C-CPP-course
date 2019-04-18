@@ -69,7 +69,7 @@ public:
     }
 
     double area() override {
-        return M_PI * M_PI * radius;
+        return M_PI * radius * radius;
     }
 };
 
