@@ -75,18 +75,18 @@ public:
 
 class Rectangle : public Shape {
 protected:
-    int width;
     int height;
+    int width;
 public:
-    explicit Rectangle(Colors color, int x = 0, int y = 0, int width = 0, int height = 0)
-            : Shape(color, Position(x, y)), width(width), height(height) {}
+    explicit Rectangle(Colors color, int x = 0, int y = 0, int height = 0, int width = 0)
+            : Shape(color, Position(x, y)), height(height), width(width) {}
 
     void draw() override {
         int x_start = position.x;
-        int x_stop = position.x + height;
+        int x_stop = position.x + width;
 
         int y_start = position.y;
-        int y_stop = position.y + width;
+        int y_stop = position.y + height;
 
         // draw and bottom
         for (int i = x_start; i <= x_stop; i++) {
@@ -102,7 +102,23 @@ public:
     }
 
     double area() override {
-        return height * width;
+        return width * height;
+    }
+};
+
+
+class TextBox : public Rectangle {
+protected:
+    std::string text;
+public:
+    explicit TextBox(Colors color, std::string text, int x, int y, int height, int width)
+            : Rectangle(color, x, y, height, width), text(text) {}
+
+    void draw() override {
+        Rectangle::draw();
+        Position text_position = Position(position.x + 4, position.y + height / 2);
+
+        ansiConsole.printText(text_position.x, text_position.y, text, color);
     }
 };
 
@@ -135,7 +151,7 @@ int main(int argc, char **argv) {
     schneeMann->add(new Circle(Colors::GREEN, 20, 22, 10));
     schneeMann->add(new Circle(Colors::GREEN, 20, 15, 6));
     schneeMann->add(new Circle(Colors::GREEN, 20, 10, 4));
-    schneeMann->add(new Rectangle(Colors::GREEN, 32, 23, 4, 4));
+    schneeMann->add(new TextBox(Colors::GREEN, "Test", 32, 23, 4, 12));
     schneeMann->add(new Point(Colors::GREEN, 10, 10));
     schneeMann->add(new Point(Colors::GREEN, 40, 10));
 
