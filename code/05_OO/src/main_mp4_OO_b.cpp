@@ -160,18 +160,63 @@ public:
     ~K(){std::cout << "-K ";}
 };
 
-class L {
+class M : public K {
+  private:
+    B b;
+public:
+    M(){std::cout << "+M ";}
+    ~M(){std::cout << "-M ";}
+};
+
+class L : public M {
 public:
   L(){std::cout << "+L ";}
   ~L(){std::cout << "-L ";}
 };
 
 
-class M {
-public:
-    M(){std::cout << "+M ";}
-    ~M(){std::cout << "-M ";}
-};
+void pattern1(){
+  B b;
+  {
+    C c;
+  }
+  A a;
+}
+
+void pattern2(){
+  B b;
+  C c;
+  A a;
+}
+
+void AtoB(A& a) {
+  A ax;
+  B b;
+}
+
+// +A(+A+B-B-A)+C-C-A
+
+void pattern3(){
+  A a;
+  AtoB(a);
+  C c;
+}
+
+
+void aufg4() {
+  L* p = new L();
+  delete p;
+}
+
+
+void aufg5(){
+
+}
+
+
+void aufg6(){
+
+}
 
 
 
@@ -190,7 +235,30 @@ int main(int argc, const char * argv[]) {
   }
 
   HeapObject::assertionsHold();
+
+  // aufgabe 1
+  pattern2();
+  std::cout << std::endl;
+  // aufgabe 2
+  pattern1();
+  std::cout << std::endl;
+  // aufgabe 3
+  pattern3();
+  std::cout << std::endl;
+  // aufgabe 4
+  aufg4();
+  std::cout << std::endl;
+  // aufgabe 5
+  aufg5();
+  std::cout << std::endl;
+  // aufgabe 6
+  aufg6();
+  std::cout << std::endl;
+  
+
+
   std::cout << " ENDE" << std::endl;
+  std::cin.ignore(); 
   return 0;
 }
 
