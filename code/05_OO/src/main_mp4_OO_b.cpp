@@ -99,23 +99,20 @@ private:
 
 struct A : public StackObject {
   A() { std::cout << "+A "; }
-
-  //A(const A&){std::cout << "+A";}
+  A(const A&){std::cout << "+A ";}
   ~A() { std::cout << "-A "; }
 };
 
 struct B : public StackObject {
   B() { std::cout << "+B "; }
-
-  //B(const B&){std::cout << "+B";}
+  B(const B&){std::cout << "+B ";}
   ~B() { std::cout << "-B "; }
 };
 
 
 struct C : public StackObject {
   C() { std::cout << "+C "; }
-
-  //C(const C&){std::cout << "+C";}
+  C(const C&){std::cout << "+C ";}
   ~C() { std::cout << "-C "; }
 };
 
@@ -225,8 +222,7 @@ void pattern2() {
   A a;
 }
 
-B AtoB(A &a) {
-  A ax;
+B AtoB(A a) {
   B b;
   return b;
 }

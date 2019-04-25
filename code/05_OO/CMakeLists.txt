@@ -6,8 +6,8 @@ project(05_OO_main_b)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_BUILD_TYPE Debug)
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-elide-constructors")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-elide-constructors")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
