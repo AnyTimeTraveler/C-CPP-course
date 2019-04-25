@@ -1,0 +1,93 @@
+1. In welcher Reihenfolge werden die Konstruktoren entlang einer Vererbungslinie ausgeführt?
+
+Parent before Child
+
+
+2. In welcher Reihenfolge werden die Destruktoren entlang einer Vererbungslinie ausgeführt?
+
+Child before Parent
+
+
+3. Welchen Zweck hat die member initializer list?
+
+Spart doppelte Initialisation beim Konstruktor.
+Initialisiert Felder direkt mit uebergebenen Variablen.
+
+
+4. Welchen Zweck hat die base initializer list?
+
+Gibt variablen an den parent Consrtuktor weiter.
+
+
+5. Sollte der Destruktor eines Objekttypen virtual deklariert werden? Warum Ja/Nein?
+
+Wenn andere Klassen von dieser Klasse erben, sollte er virtual sein, damit er bei der Destruktion des erbenden Objekts auch ausgefuehrt wird. 
+
+
+6. Werden die Konstruktoren von Felder einer Klasse X vor X::X() aufgerufen? Warum Ja/Nein?
+
+Ja, sie werden entweder durch die initializer list oder mit Standardwerten initialisiert.
+
+
+7. Was passiert, wenn der Operator new ausgeführt wird?
+
+new erstellt ein Objekt der Klasse im Heap und returnet einen Pointer zu dessen Position.
+
+
+8. Wieviel Kopien des Typs X werden erzeugt beim Aufruf einer Funktion X foo(X x) erstellt? Lassen Sie außer Acht, dass der Compiler Kopien wegoptimieren kann.
+
+Zwei, da der Parameter und der Rueckgabewert Platz reserviert bekommen.
+
+
+9. Was sind die Unterschiede zwischen den Assoziationen is-a und has-a (im Allgemeinen)?
+
+is-a: erbt
+has-a: hat Feld
+
+
+10. Wie setzen Sie die folgenden Beziehungen in C++ um: is-a, consists-of, has-a, knows?
+
+(siehe 9.)
+
+
+11. Was sind die Unterschiede zwischen den Assoziationen Aggregation und Komposition (im Allgemeinen und in C++)?
+
+Aggregation: Members, die dem Objekt (im Konstruktor) uebergeben werden und unabhaengige Lifetime haben.
+Komposition: Members, die vom Objekt selber kontrolliert werden und der Lifetime des Objekts folgen.
+
+
+12. Wählen Sie für jeden der folgenden Begriffe aus, ob Sie einen Werttypen oder einen Objekttypen zu dessen Implementierung wählen würden (Be- gründung): Temperatur, wissenschaftlicher Artikel, Farbton, elektronisches Bauteil.
+
+Temperatur: Wertetyp, Integer, nur eine Zahl
+Wissenschaftlicher Artikel: Objekttyp, Sammlung aus Strings, Abmessungen, und Grafiken, zu komplex fuer einen Wertetyp
+Farbton: Wertetyp, Integer, nur eine Zahl, je ein Byte fuer RGBA zur einfachen Speicherung und Verarbeitung.
+Elektronisches Bauteil: Objekttyp, Sammlung aus Strings und Abmessungen, zu komplex fuer einen Wertetyp
+
+
+13. Warum ist die Laufzeit der Operatoren new und delete womöglich nicht konstant?
+
+Da beim Aufruf von new Speicherplatz frei sein muss oder frei gemacht werden muss und bei delete Speicher frei gegeben werden muss.
+
+
+14. Welche Probleme können sich bei der automatischen Allokation von Objekten auf dem Stack auf Rechnern mit eingeschränkten Ressourcen ergeben?
+
+Dass nicht genug Speicherplatz auf dem Stack verfuegbar ist und es darauf zu einem StackOverflow kommt.
+
+
+15. Wie können Sie im Code zwei Objekte auf Äquivalenz prüfen?
+
+In dem man die equals Methode aufruft oder die Felder der Objekte jeweils auf Äquivalenz prueft.
+
+
+16. Wie können Sie im Code zwei Objekte auf Identität prüfen (Objekte sind per Zeiger gegeben)?
+
+Man prueft, ob die Pointer auf die gleiche Addresse zeigen (Pointeraretmetik)
+
+
+17. Gegeben sei die Klasse Base (s.u.). Erstellen Sie eine Klasse Derived, deren öffentlicher Konstruktor zwei int akzeptiert, die als Initialisierungswerte für a und b dienen und somit die Variablendefinition Derived d(1,2); ermöglicht.
+
+class Derived : public Base {
+int b;
+public:
+Derived(int a, int b) : Base(a), b(b) {}
+};
