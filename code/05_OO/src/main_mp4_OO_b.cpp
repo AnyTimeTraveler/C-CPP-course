@@ -254,40 +254,14 @@ void aufg6() {
 
 
 int main(int argc, const char *argv[]) {
-  Bar *bar = new Bar();
-  // ...
-  delete bar; // implies "delete _helperObject";
 
-  FooBase *obj = new FooDerived(7);
-  delete obj;
+//  B+ A+ B- C+ C- B+ A- B-
 
   {
-    C c;
-    K *k = new K();
-    delete k;
+    B b;
+    A a;
+
   }
-
-  HeapObject::assertionsHold();
-
-  // aufgabe 1
-  pattern2();
-  std::cout << std::endl;
-  // aufgabe 2
-  pattern1();
-  std::cout << std::endl;
-  // aufgabe 3
-  pattern3();
-  std::cout << std::endl;
-  // aufgabe 4
-  aufg4();
-  std::cout << std::endl;
-  // aufgabe 5
-  aufg5();
-  std::cout << std::endl;
-  // aufgabe 6
-  aufg6();
-  std::cout << std::endl;
-
 
   std::cout << " ENDE" << std::endl;
 //  std::cin.ignore();
