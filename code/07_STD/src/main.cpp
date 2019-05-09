@@ -7,6 +7,7 @@
 #include "genericStack.hpp"
 #include <vector>
 #include <list>
+#include <algorithm>
 
 
 void use_intStack(){
