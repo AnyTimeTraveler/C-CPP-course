@@ -1,0 +1,48 @@
+1. Wozu wird das statische Binden des Aufrufs einer virtuellen Methode zwingend benötigt?
+
+Um waerend der Laufzeit festzustellen, welche Methode auszufuehren ist.
+
+
+2. Zu welchem Zeitpunkt wird festgelegt, aus welcher Klasse die Implementierung einer virtuellen Methode stammt, die aufgerufen wird?
+
+Zur Laufzeit des Programms
+
+
+3. Zu welchem Zeitpunkt wird festgelegt, welche Methodensignatur verwendet wird, um einen Aufruf einer überladenen Methode zu generieren?
+
+Zur Compile-time
+
+
+4. Muss für einen upcast static_cast oder dynamic_cast verwendet werden? Warum ja/nein?
+
+Static_cast, da keine Runtime checks notwendig sind.
+
+
+5. Muss für einen downcast static_cast oder dynamic_cast verwendet werden? Warum ja/nein?
+
+Dynamic_cast, da geprueft werden muss, ob das objekt wirklich der Klasse entspringt.
+
+
+6. Kann der Compiler einen downcast implizit vornehmen? Begründung angeben.
+
+Nein, nur Upcast, da der Compiler nicht wissen kann, welche Klassen von Shape erbt und ob diese Klasse auch wirklich im Vererbungsstack auftaucht.
+
+
+7. Kann über den Zeiger auf ein Objekt einer abgeleiteten Klasse die Basisklassenimplementierung einer virtuellen Methode aufgerufen werden (z.B. this in einer überschriebenen Methode)? Wenn ja: wie?
+
+Ja, zum Beispiel ueber einen Static cast oder durch die explizite Bennung der Basisklasse.
+
+
+8. Kann über den Zeiger auf ein Objekt einer Basisklasse eine Methode aufgerufen werden, welche in einer abgeleiteten Klasse definiert ist und nicht virtuell ist? Wenn ja: wie?
+
+Js, durch einen dynamic_cast.
+
+
+9. Für Fortgeschrittene: Wie geht der Compiler beim Aufruf einer Methode vor, welche überladen und virtuell ist?
+
+Keine Lust.
+
+
+10. Diskutieren Sie den Zusammenhang von Funktionszeigern und Interrupt Handlern.
+
+Auch keine Lust mehr...

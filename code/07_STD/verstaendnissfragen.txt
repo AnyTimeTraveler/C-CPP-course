@@ -1,0 +1,31 @@
+1. Worin liegen die wesentlichen Unterschiede zwischen std::vector und std::list?
+
+Liste allokiert speicher fuer jedes Element im Heap.
+Vector legt alle Objekte nacheinander im Speicher ab und kann somit durch Pointer Aritmetik schnell zu bestimmten punkten springen.
+Wenn ein Vektor ein objekt entfernt, muessen aber alle folgenden Objekte nachruecken.
+
+2. Wie gelingt es std::sort() einen Container zu sortieren, in dem sich Objekte befinden, welche Instanzen von Typen sind, die sort() nicht bekannt sind?
+
+Mit einer Comparator-Funktion.
+
+
+3. Welchen Vorteil hat die Nutzung von Container-Templates aus der Standardbibliothek gegenüber einer Eigenimplementierung?
+
+ - Keine Bugs
+ - Nicht das Rad neu erfinden
+ - Besseres Verstaendniss, wenn andere Programmierer den Code lesen
+
+
+4. Sie benötigen für ein Programmierproblem eine Datenspeicher, welche sich wie ein Stapel verhält. Wie lösen Sie dieses Problem?
+
+#include <stack>
+std::stack<int> myStack;
+
+
+5. Ein char kann implizit in ein int umgewandelt werden. Kann eine std::list<char> in eine std::list<int> implizit umgewandelt werden?
+Begründung!
+
+Wahrscheinlich nicht, zumindest nicht, wenn man mit Logik an das Problem ran geht, da std::list eine Umwandlung fuer jeden Typ bereitstellen muesste.
+So funktionieren Generics aber nicht.
+
+Aber da ich heute gelernt habe, dass jegliche Logik bei C++ aus dem Fenster geworfen wird, kann es durchaus moeglich sein, dass ich es einfach noch nicht gelernt habe.
