@@ -8,7 +8,7 @@
 
 void workOnCopy_naive(std::vector<Vehicle*> vehicles){
   std::vector<Vehicle*> tempVec;
-  for (int i=0; i<vehicles.size(); i++){
+  for (int i=0; i<vehicles.size(); ++i){
     Vehicle * currentVehicle = vehicles[i];
     Car*   carToCopy   = dynamic_cast<Car*>(currentVehicle);  // RTTI type check
     Truck* truckToCopy = dynamic_cast<Truck*>(currentVehicle);// may be nullptr
@@ -27,7 +27,7 @@ void workOnCopy_naive(std::vector<Vehicle*> vehicles){
   for(auto vehi : tempVec){
     std::cout << vehi->model() << " " << vehi->payload_kg() << " kg" << std::endl;
   }
-  for (int i=0; i<tempVec.size(); i++){
+  for (int i=0; i<tempVec.size(); ++i){
     delete tempVec[i];
   }
   tempVec.clear();

@@ -78,7 +78,7 @@ void fillRandom(Collection *collection, int max_number, int amount, Iterator _ju
     for (int i = 0; i < amount;) {
         rand = std::rand() % max_number;
 
-        it = find(collection->begin(), collection->end(), rand);
+        it = std::find(collection->begin(), collection->end(), rand);
         if (it != collection->end()) {
             continue;
         }
